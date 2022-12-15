@@ -41,10 +41,17 @@
 </svg>
 ```
 
-使用方法 `<svg><use xlink:href="#home" /></svg>`
+在页面代码中直接写如下代码：
+
+```
+<svg><use xlink:href="#home" /></svg>
+```
+
+关键 `#home` 的home, 和你svg文件名一样既可
 
 参考文章:
 
 [手摸手，带你优雅的使用 icon](https://juejin.cn/post/6844903517564436493)
+
 [使用require.context实现前端工程自动化](https://www.jianshu.com/p/c894ea00dfec)
 
