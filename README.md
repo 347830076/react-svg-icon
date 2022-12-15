@@ -1,5 +1,6 @@
 # 创建 icon 组件
 
+```
 ├── README.md
 ├── craco.config.js    // webpack 配置
 ├── package-lock.json
@@ -24,5 +25,6 @@
 |     └── icon.ts   // 关键代码
 ├── tsconfig.json
 └── tsconfig.paths.json
+```
 
 
