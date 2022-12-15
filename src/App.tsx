@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TestIcon from '@/pages/test-icon/test-icon'
+import home from '@/assets/svg/home.svg'
+import logo from '@/assets/svg/logo.svg'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <div>
+      正常引入：
+      <img src={home} alt="" />
+      <img src={logo} alt="" />
+     </div>
+    
+     <TestIcon />
     </div>
   );
 }

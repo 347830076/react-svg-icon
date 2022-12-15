@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+// 圆圈
+@mixin circle($width) {
+  display: inline-block;
+  border-radius: 50%;
+  width: $width;
+  height: $width;
+}
+
+// 省略号样式
+@mixin ellipsis($lineNum: "") {
+  overflow: hidden;
+
+  @if $lineNum != "" {
+    /* stylelint-disable-next-line */
+    display: -webkit-box;
+    /* stylelint-disable-next-line */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lineNum;
+  } @else {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// css箭头
+@mixin arrow($direction, $width, $height, $color) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+
+  @if $direction == "top" {
+    border-top: 0;
+    border-right: solid $width transparent;
+    border-bottom: solid $height $color;
+    border-left: solid $width transparent;
+  } @else if $direction == "bottom" {
+    border-top: solid $height $color;
+    border-right: solid $width transparent;
+    border-bottom: 0;
+    border-left: solid $width transparent;
+  } @else if $direction == "left" {
+    border-top: solid $height transparent;
+    border-right: solid $width $color;
+    border-bottom: solid $height transparent;
+    border-left: 0;
+  } @else if $direction == "right" {
+    border-top: solid $height transparent;
+    border-right: 0;
+    border-bottom: solid $height transparent;
+    border-left: solid $width $color;
+  }
+}
+
+// 上下左右居中，为解决被外部数据覆盖的问题，强制使用!important
+@mixin setXYMiddle($width, $height) {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -$height / 2 !important;
+  margin-left: -$width / 2 !important;
+  width: $width !important;
+  min-width: unset;
+  height: $height !important;
+}
+
+// 上下居中
+@mixin setYMiddle($height) {
+  position: absolute;
+  top: 50%;
+  margin-top: -$height / 2;
+  height: $height;
+}
+
+// 左右居中
+@mixin setXMiddle($width) {
+  position: absolute;
+  left: 50%;
+  margin-left: -$width / 2;
+  width: $width;
+}
+
+// 切换动画
+@mixin transition($type) {
+  transition: .3s $type;
+}
+
+// 按钮公共样式
+@mixin btn-normal($color) {
+  @include transition(background-color);
+
+  border-color: $color;
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  font-size: $font-size-14;
+  text-align: center;
+  color: $color-FFFFFF;
+  background: $color;
+  line-height: 40px;
+  cursor: pointer;
+  user-select: none;
+}
+
+// 失效状态，强制使用同一种颜色
+@mixin disable($type, $color) {
+  cursor: not-allowed !important;
+
+  @if $type == "color" {
+    color: $color !important;
+
+    &:hover {
+      color: $color !important;
+    }
+
+    &:active {
+      color: $color !important;
+    }
+  } @else if $type == "background-color" {
+    background-color: $color !important;
+
+    &:hover {
+      background-color: $color !important;
+    }
+
+    &:active {
+      background-color: $color !important;
+    }
+  }
+}
+
+// 全局阴影效果
+@mixin shadow {
+  box-shadow: 0 0 10px 2px rgba(#5E5C5C, .25);
+}
+
+// 变色样式
+@mixin action-green($type) {
+  @include transition($type);
+
+  cursor: pointer;
+
+  @if $type == "color" {
+    &:hover {
+      color: $color-55DE99 !important;
+    }
+
+    &:active {
+      color: $color-22B76B !important;
+    }
+  } @else if $type == "background-color" {
+    &:hover {
+      background-color: $color-55DE99 !important;
+    }
+
+    &:active {
+      background-color: $color-22B76B !important;
+    }
+  }
+}
+
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 旋转
+@mixin animation-rotate() {
+  animation-duration: 1s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 1, 1, 1);
+}
+
+// 文本n行溢出隐藏显示...
+@mixin ellipsis-basic($n) {
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $n;
+  -webkit-line: $n;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+// 文本不换行
+@mixin no-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 宽高
+@mixin wh($w: 100%, $h: 100%) {
+  width: $w;
+  height: $h;
+}
+
+// 跳转文字 有hover效果
+@mixin link($color: $text-grey-color, $hover-color: $text-grey-color) {
+  position: relative;
+  color: $color;
+  cursor: pointer;
+  user-select: none;
+
+  @content;
+
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+// 跳转文字 带下划线 有hover效果
+@mixin link-underline($color: $text-grey-color, $hover-color: $text-grey-color) {
+  @include link($color, $hover-color) {
+    &:hover {
+      &::after {
+        border-bottom-color: $hover-color;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: "";
+      left: 0;
+      border-bottom: 1px solid $color;
+      width: 100%;
+    }
+  }
+}
+
+// flex 布局
+@mixin flex($obj) {
+  display: flex;
+
+  @if map-get($obj, "justify") {
+    justify-content: map-get($obj, "justify");
+  }
+
+  @if map-get($obj, "align") {
+    align-items: map-get($obj, "align");
+  }
+}
+
+// flex 水平居中
+@mixin flex-c {
+  @include flex((justify: center));
+}
+
+// flex 垂直居中
+@mixin flex-vc {
+  @include flex((align: center));
+}
+
+// flex 水平两端对齐
+@mixin flex-sb {
+  @include flex((justify: space-between));
+}
+
+// flex 水平垂直居中
+@mixin flex-cc {
+  @include flex((justify: center, align: center));
+}
+
+// flex 水平两端对齐，垂直居中
+@mixin flex-sbc {
+  @include flex((justify: space-between, align: center));
+}

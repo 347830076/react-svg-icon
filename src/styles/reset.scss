@@ -1,0 +1,105 @@
+/* stylelint-disable max-line-length */
+
+:-moz-placeholder,
+:-ms-input-placeholder,
+::-ms-input-placeholder,
+::-webkit-input-placeholder,
+::placeholder { color: #C4C4C4; }
+
+// 去除焦点外边框
+:focus {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #262626;
+  background: #F1F2F5;
+  font: 14px/20px  "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+// 去除input标签的默认样式
+input,
+textarea {
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+// 重置各标签的默认样式
+body,
+div,
+span,
+header,
+footer,
+nav,
+section,
+aside,
+article,
+ul,
+dl,
+dt,
+dd,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+b,
+textarea,
+button,
+input,
+select,
+figure,
+figcaption {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  box-sizing: border-box;
+  word-break: break-all;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover,
+  &:focus { outline: none; }
+}
+
+// 清除IE下图片的边框
+img {
+  border-style: none;
+  font-size: 0;
+}
+
+// 解决chrome浏览器默认黄色背景问题
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #FFFFFF inset;
+  box-shadow: 0 0 0 1000px #FFFFFF inset;
+}
+
+// 重置点击按钮类型的input
+input[type="button"] {
+  display: block;
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}

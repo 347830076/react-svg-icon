@@ -1,0 +1,94 @@
+@import "@/styles/var.scss";
+@import "@/styles/mixin.scss";
+
+.testIconPage {
+  position: relative;
+  padding: 8px 16px;
+  min-height: calc(100vh);
+  font-size: 14px;
+  // color: $color-white;
+  line-height: 24px;
+
+  :global {
+    .ant-empty {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.title {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.tips {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.iconList {
+  display: flex;
+  margin-top: 20px;
+  padding: 0 10px;
+  background-color: $color-white;
+  flex-wrap: wrap;
+
+  .iconItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // margin: 9px 8px;
+    border-radius: 2px;
+    padding: 20px 0;
+    width: 50%;
+
+    // height: 140px;
+    text-align: center;
+    color: #4E5D71;
+    transition: all .2s ease-in-out;
+    flex-direction: column;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    .icon,
+    .iconName {
+      max-width: 100%;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .iconName {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 14px;
+
+      @include ellipsis;
+    }
+  }
+}
+
+.inputFontSize {
+  width: 40px;
+  height: 22px;
+  font-size: 12px;
+  line-height: 22px;
+
+  .el-input__inner {
+    width: 40px;
+    height: 22px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+}

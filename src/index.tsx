@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 引入项目里本地图标
+import '@/unit/icon'
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
