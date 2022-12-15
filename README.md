@@ -1,4 +1,4 @@
-# 创建 icon 组件
+# react+ts 以 svg 创建 icon 组件
 
 ```
 ├── README.md
